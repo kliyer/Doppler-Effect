@@ -16,7 +16,7 @@ function drawNewImage(imageObj1, number) {
         var imageY = 0;
         var imageWidth = imageObj.width;
         var imageHeight = imageObj.height;
-        factor = Math.log10(Math.abs(number/10));
+        factor = Math.log10(Math.abs(number));
 
         context.drawImage(imageObj, 0, 0);
 
@@ -34,13 +34,13 @@ function drawNewImage(imageObj1, number) {
           if (number<0){
           imageData1.data[i] = red + number*factor ;
           imageData1.data[i + 1] = green + number*factor;
-          imageData1.data[i + 2] = blue;
+          imageData1.data[i + 2] = blue - number*factor;
           imageData1.data[i + 3] = alpha;
         }
           if (number>0){
           imageData1.data[i] = red;
           imageData1.data[i + 1] = green - number*factor;
-          imageData1.data[i + 2] = blue;
+          imageData1.data[i + 2] = blue - number*factor;
           imageData1.data[i + 3] = alpha;
 
           }
