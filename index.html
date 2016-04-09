@@ -16,11 +16,18 @@
       #ip {
           width: 5%;
           float: left;
+          margin:5px;
       }
       h1 {
           color: white;
           font-size: 30px;
           font-weight: bold;
+      }
+      label {
+          color:white;
+          width 25%;
+          float:left;
+          margin : 5px;
       }
     </style>
   </head>
@@ -28,6 +35,7 @@
     <h1>Doppler Effect Simulation</h1>
     <canvas id="myCanvas" width="840" height="410" style="background-color: rgba(0, 0, 0, 255);"></canvas>
     <input id="slider" type ="range" min ="-100" max="100" step ="1"/>
+    <label>Velocity in km/s (-100 to 100)</label>
     <input id="ip" type ="number"/>
   </body>
 </html>
