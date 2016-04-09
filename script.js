@@ -37,12 +37,18 @@ function drawNewImage(imageObj1, number) {
           imageData1.data[i + 2] = blue - number*factor;
           imageData1.data[i + 3] = alpha;
         }
-          if (number>0){
+          else if (number>0){
           imageData1.data[i] = red;
           imageData1.data[i + 1] = green - number*factor;
           imageData1.data[i + 2] = blue - number*factor;
           imageData1.data[i + 3] = alpha;
 
+          }
+          else{
+          imageData1.data[i] = red;
+          imageData1.data[i + 1] = green;
+          imageData1.data[i + 2] = blue;
+          imageData1.data[i + 3] = alpha;
           }
         }
         context.putImageData(imageData1, 0, 0);
@@ -67,12 +73,18 @@ $( document ).ready(function() {
 });
 
 	$( "#ip1" ).change(function() {
+		if($( "#ip1" ).val()<-100||$( "#ip1" ).val()>100){
+		alert("Value should be within range -100 to 100");
+		$( "#ip1" ).val(0);
+		}
+		else{
 	    var imageObj = new Image();
 	    imageObj.onload = function() {
 	   		drawNewImage(this, $( "#ip1" ).val());
 	   	};
 	   	imageObj.crossOrigin="anonymous";
 	    imageObj.src = 'star.png';
+	    }
 	});
 });
 
