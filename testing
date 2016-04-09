@@ -1,0 +1,58 @@
+   function drawImage(imageObj, number) {
+        
+        context.drawImage(imageObj, imageX, imageY);
+        var imageData1 = context.createImageData(imageWidth,imageHeight);
+
+        // iterate over all pixels
+        for(var i = 0, n = data.length; i < n; i += 4) {
+          var red = data[i];
+          var green = data[i + 1];
+          var blue = data[i + 2];
+          var alpha = data[i + 3];
+          /*if (number<0){
+          imageData1.data[i] = red + number;
+          imageData1.data[i + 1] = green + number;
+          imageData1.data[i + 2] = blue - number;
+          imageData1.data[i + 3] = alpha;
+        }
+         else if (number>0){
+          imageData1.data[i] = red;
+          imageData1.data[i + 1] = green - number;
+          imageData1.data[i + 2] = blue;
+          imageData1.data[i + 3] = alpha;
+
+          }
+          else {*/
+	          imageData1.data[i] = red;
+	          imageData1.data[i + 1] = green;
+	          imageData1.data[i + 2] = blue;
+	          imageData1.data[i + 3] = alpha;
+
+          //}
+        }
+        context.putImageData(imageData1, 69, 50);
+      }
+        
+
+$(function(ready){
+	var imageObj = new Image();
+	var canvas = document.getElementById('myCanvas');
+	var context = canvas.getContext('2d');
+	var imageX = 69;
+	var imageY = 50;
+	var imageWidth = imageObj.width;
+	var imageHeight = imageObj.height;
+	var imageData = context.getImageData(imageX, imageY, imageWidth, imageHeight);
+	var data = imageData.data;
+
+	imageObj.onload = function() {
+	drawImage(this,-100)};
+	imageObj.src='star-small.png';
+	var diff = 0;
+	$( "#slider3" ).val(0);
+	$( "#ip1" ).val(0);
+	console.log(imageWidth);
+	    $('#slider3').change(function() {
+
+	    });
+});
