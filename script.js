@@ -1,20 +1,19 @@
 var data = [];
-
 function drawReferenceImage(imageObj1, number) {
-    var canvas = document.getElementById('myCanvas');
-    var context = canvas.getContext('2d');
-    var imageX = 0;
-    var imageY = 0;
-    var imageWidth = imageObj.width;
-    var imageHeight = imageObj.height;
+	var canvas = document.getElementById('myCanvas');
+    	var context = canvas.getContext('2d');
+    	var imageX = 0;
+    	var imageY = 0;
+    	var imageWidth = imageObj.width;
+    	var imageHeight = imageObj.height;
 		
 	context.drawImage(imageObj, 0, 0);
 	var imageData= context.getImageData(0, 0, imageWidth, imageHeight);
-    var tempdata = imageData.data; 
-	for(var i = 0, n = tempdata.length; i < n; i++) {
+    	var tempdata = imageData.data; 
+	for (var i = 0, n = tempdata.length; i < n; i++) {
 			data[i]= tempdata [i];
-		}
-    }
+	}
+}
 function modifyImage(imageObj1, number) {
 	var canvas = document.getElementById('myCanvas');
 	var context = canvas.getContext('2d');
