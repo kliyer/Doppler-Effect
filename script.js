@@ -1,6 +1,6 @@
 var data = [];
 
-function drawImage(imageObj1, number) {
+function drawReferenceImage(imageObj1, number) {
     var canvas = document.getElementById('myCanvas');
     var context = canvas.getContext('2d');
     var imageX = 0;
@@ -15,7 +15,7 @@ function drawImage(imageObj1, number) {
 			data[i]= tempdata [i];
 		}
     }
-function drawNewImage(imageObj1, number) {
+function modifyImage(imageObj1, number) {
 	var canvas = document.getElementById('myCanvas');
 	var context = canvas.getContext('2d');
 	var imageX = 0;
@@ -53,7 +53,7 @@ function drawNewImage(imageObj1, number) {
 }
 var imageObj = new Image();
 imageObj.onload = function() {
-drawImage(this, 0)};
+drawReferenceImage(this, 0)};
 var diff = 0;
 $('#slider').val(0);
 $('#ip').val(0);
@@ -64,7 +64,7 @@ $( document ).ready(function() {
 	$( '#slider').change(function() {
 		var imageObj = new Image();
 		imageObj.onload = function() {
-	    	drawNewImage(this, $('#slider').val());
+	    	modifyImage(this, $('#slider').val());
 	    };
 		$('#ip').val($('#slider').val());
 		imageObj.crossOrigin = 'anonymous';
@@ -78,7 +78,7 @@ $( document ).ready(function() {
 		} else{
 	    	var imageObj = new Image();
 	    	imageObj.onload = function() {
-	   			drawNewImage(this, $('#ip').val());
+	   			modifyImage(this, $('#ip').val());
 	   		};
 		$('#slider').val($('#ip').val());
 		imageObj.crossOrigin = 'anonymous';
