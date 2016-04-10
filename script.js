@@ -26,29 +26,30 @@ function modifyImage(imageObj1, number) {
 
         // iterate over all pixels
 	for(var i = 0, n = data.length; i < n; i += 4) {
-        var red = data[i];
-        var green = data[i + 1];
-        var blue = data[i + 2];
-        var alpha = data[i + 3];
-        if (number < 0) {
-        	imageData1.data[i] = red + (number * factor);
-        	imageData1.data[i + 1] = green + (number * factor);
-        	imageData1.data[i + 2] = blue - (number * factor);
-        	imageData1.data[i + 3] = alpha;
-        }
-        else if (number > 0){
-        	imageData1.data[i] = red;
-        	imageData1.data[i + 1] = green - (number * factor);
-        	imageData1.data[i + 2] = blue - (number * factor);
-        	imageData1.data[i + 3] = alpha;
-		} else {
-			imageData1.data[i] = red;
-          	imageData1.data[i + 1] = green;
-          	imageData1.data[i + 2] = blue;
-          	imageData1.data[i + 3] = alpha;
+	        var red = data[i];
+	        var green = data[i + 1];
+	        var blue = data[i + 2];
+	        var alpha = data[i + 3];
+	        if (number < 0) {
+	        	imageData1.data[i] = red + (number * factor);
+	        	imageData1.data[i + 1] = green + (number * factor);
+	        	imageData1.data[i + 2] = blue - (number * factor);
+	        	imageData1.data[i + 3] = alpha;
+	        }
+	        else if (number > 0){
+	        	imageData1.data[i] = red;
+	        	imageData1.data[i + 1] = green - (number * factor);
+	        	imageData1.data[i + 2] = blue - (number * factor);
+	        	imageData1.data[i + 3] = alpha;
+			} 
+		else {
+				imageData1.data[i] = red;
+	          	imageData1.data[i + 1] = green;
+	          	imageData1.data[i + 2] = blue;
+	          	imageData1.data[i + 3] = alpha;
+			}
 		}
-	}
-	context.putImageData(imageData1, 0, 0);
+		context.putImageData(imageData1, 0, 0);
 }
 var imageObj = new Image();
 imageObj.onload = function() {
@@ -73,15 +74,16 @@ $( document ).ready(function() {
 	$('#ip').change(function() {
 		if($('#ip').val() < -100 || $('#ip').val() > 100){
 			alert('Value should be within range -100 to 100');
-			$('#ip').val(0);
-		} else{
-	    	var imageObj = new Image();
-	    	imageObj.onload = function() {
-	   			modifyImage(this, $('#ip').val());
-	   		};
-		$('#slider').val($('#ip').val());
-		imageObj.crossOrigin = 'anonymous';
-		imageObj.src = 'star-small.png';
+			$('#ip').val();
+		} 
+		else{
+		    	var imageObj = new Image();
+		    	imageObj.onload = function() {
+		   			modifyImage(this, $('#ip').val());
+		   		};
+			$('#slider').val($('#ip').val());
+			imageObj.crossOrigin = 'anonymous';
+			imageObj.src = 'star-small.png';
 		}
 	});
 });
